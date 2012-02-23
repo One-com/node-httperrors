@@ -1,0 +1,21 @@
+{
+    "author": "Andreas Lind Petersen <andreas@one.com>",
+    "name": "httperrors",
+    "description": "Handy JavaScript Error classes representing the standard HTTP errors. Easily extensible and subclassable.",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/One-com/node-httperrors.git"
+    },
+    "main": "index.js",
+    "engines": {
+        "node": ">= 0.2.0"
+    },
+    "dependencies": {
+        "underscore": "= 1.3.1"
+    },
+    "devDependencies": {},
+    "publishConfig": {
+        "repository": "http://registry.npmjs.org/"
+    }
+}
