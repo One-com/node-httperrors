@@ -3,6 +3,16 @@ node-httperrors
 
 Exposes HTTP 4xx and 5xx status codes as JavaScript Error objects.
 
+Installation
+------------
+
+Make sure you have node.js and npm installed, then run:
+
+    npm install httperrors
+
+Usage
+-----
+
     var httpErrors = require('httperrors');
 
     // Instantiate by name (UpperCamelCase):
