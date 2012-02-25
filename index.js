@@ -52,7 +52,7 @@ _.each(http.STATUS_CODES, function (httpErrorName, statusCode) {
     }).replace(/[^a-z]/gi, '');
 
     // Add the error to the exported object and alias it as `statusCode` so you can easily
-    // say new errorClass[res.statusCode] in a http proxying setting.
+    // say new httpErrors[res.statusCode] in a http proxying setting.
     httpErrors[type] = httpErrors[statusCode] = httpErrors.createError({
         statusCode: statusCode,
         type: type,
