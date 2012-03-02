@@ -39,7 +39,7 @@ You can also create an error by status code (useful when proxying):
         var request = require('request');
         request('http://example.com/thething', function (err, response) {
             if (err) {
-                return cb(new httpErrors[response.statusCode]());
+                return cb(new (httpErrors[response.statusCode] || httpErrors.BadGateway)());
             }
             // ...
         });
