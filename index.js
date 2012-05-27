@@ -1,61 +1,57 @@
-var http = require('http'),
-    util = require('util'),
-    _ = require('underscore'),
-    httpErrors = module.exports = {};
+var http = require('http');
+var util = require('util');
 
-httpErrors.createError = function (errorDefinition, SuperConstructor) {
-    if (typeof errorDefinition === 'string') {
-        errorDefinition = {type: errorDefinition};
-    }
+var httpErrors = module.exports;
+
+httpErrors.createError = function (options, SuperConstructor) {
 
     SuperConstructor = SuperConstructor || Error;
 
-    function Constructor(options) {
-        Error.captureStackTrace(this, Constructor);
-        if (typeof options === 'string') {
-            if (arguments.length > 1 && typeof arguments[1] === 'object' && arguments[1] !== null) {
-                arguments[1].msg = options;
-                options = arguments[1];
-            } else {
-                options = {msg: options};
-            }
-        }
-        _.extend(this, options);
-        SuperConstructor.call(this, this.msg);
+    function Constructor(msg) {
+        SuperConstructor.call(this);
+        Error.captureStackTrace(this, arguments.callee);
+
+        // set some common fields
+        this.message = msg;
+        this.name = options.name;
+        this.statusCode = options.statusCode;
     };
     util.inherits(Constructor, SuperConstructor);
 
-    _.extend(Constructor.prototype, errorDefinition);
-
-    Constructor.prototype[errorDefinition.type] = true; // So you can avoid instanceof: if (err.NotFound) {...}
+    // to avoid doing if (err instanceof NotFound)
+    // instead you can just do if (err.NotFound)
+    Constructor.prototype[options.name] = true;
 
     Constructor.prototype.toString = function () {
-        return this.type + (this.statusCode ? ' [' + this.statusCode + ']' : '') + (this.hasOwnProperty('msg') ? ': ' + this.msg : '');
+        return this.name +
+            (this.statusCode ? ' [' + this.statusCode + ']' : '') +
+            (this.message ? ': ' + this.message : '');
     };
+
     return Constructor;
 };
 
-/*
- * Map the error codes/names, as defined in Node's [http
- * module](http://nodejs.org/docs/latest/api/http.html).
- */
-_.each(http.STATUS_CODES, function (httpErrorName, statusCode) {
-    statusCode = parseInt(statusCode, 10);
-    // Only include 4xx and 5xx here.
+/// Map the error codes/names, as defined in Node's [http
+/// module](http://nodejs.org/docs/latest/api/http.html).
+Object.keys(http.STATUS_CODES).forEach(function(statusCode) {
+    statusCode = +statusCode; // turn into a number
+    var httpErrorName = http.STATUS_CODES[statusCode];
+
+    // Only include 4xx and 5xx
     if (statusCode < 400) {
         return;
     }
 
-    // Invent a type by camel casing the usual message and removing non-alphabetical chars
-    var type = httpErrorName.replace(/ ([a-z])/gi, function ($0, $1) {
+    // Invent a type by camel casing the usual message and removing
+    // non-alphabetical chars
+    var name = httpErrorName.replace(/ ([a-z])/gi, function ($0, $1) {
         return $1.toUpperCase();
     }).replace(/[^a-z]/gi, '');
 
-    // Add the error to the exported object and alias it as `statusCode` so you can easily
-    // say new httpErrors[res.statusCode] in a http proxying setting.
-    httpErrors[type] = httpErrors[statusCode] = httpErrors.createError({
+    // Add the error to the exported object and alias it as `statusCode`
+    // allows for new httpErrors[res.statusCode] in a http proxying setting
+    httpErrors[name] = httpErrors[statusCode] = httpErrors.createError({
         statusCode: statusCode,
-        type: type,
-        msg: httpErrorName
+        name: name,
     });
 });
