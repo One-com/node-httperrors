@@ -1,6 +1,8 @@
 var http = require('http');
 var util = require('util');
 
+var xtend = require('xtend');
+
 var httpErrors = module.exports;
 
 httpErrors.createError = function (options, SuperConstructor) {
@@ -15,6 +17,14 @@ httpErrors.createError = function (options, SuperConstructor) {
         this.message = msg;
         this.name = options.name;
         this.statusCode = options.statusCode;
+
+        // if an object is passed in, the fields are merged
+        if (typeof msg === 'object') {
+            xtend(this, msg);
+        }
+        else {
+            this.message = msg;
+        }
     };
     util.inherits(Constructor, SuperConstructor);
 

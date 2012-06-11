@@ -19,3 +19,13 @@ test('BadGateway', function() {
     assert.equal(err.statusCode, 502);
     assert.equal(err.name, 'BadGateway');
 });
+
+test('constructor with object', function() {
+    var err = new errors.NotFound({
+        message: 'foo',
+        url: 'bar'
+    });
+
+    assert.equal(err.message, 'foo');
+    assert.equal(err.url, 'bar');
+});
