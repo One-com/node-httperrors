@@ -61,6 +61,6 @@ Object.keys(http.STATUS_CODES).forEach(function(statusCode) {
     // allows for new httpErrors[res.statusCode] in a http proxying setting
     httpErrors[name] = httpErrors[statusCode] = httpErrors.createError({
         statusCode: statusCode,
-        name: name,
+        name: name
     });
 });
