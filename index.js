@@ -9,21 +9,21 @@ httpErrors.createError = function (options, SuperConstructor) {
 
     SuperConstructor = SuperConstructor || Error;
 
-    function Constructor(msg) {
+    function Constructor(message) {
         SuperConstructor.call(this);
         Error.captureStackTrace(this, arguments.callee);
 
         // set some common fields
-        this.message = msg;
+        this.message = message;
         this.name = options.name;
         this.statusCode = options.statusCode;
 
         // if an object is passed in, the fields are merged
-        if (typeof msg === 'object') {
-            xtend(this, msg);
+        if (typeof message === 'object') {
+            xtend(this, message);
         }
         else {
-            this.message = msg;
+            this.message = message;
         }
     };
     util.inherits(Constructor, SuperConstructor);
