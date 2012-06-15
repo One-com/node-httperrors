@@ -52,14 +52,14 @@ Creating your own Error classes:
     var MyError = httpErrors.createError({
         type: 'MyError',
         // Used when no message is handed to the constructor:
-        msg: 'A slightly longer description of the error'
+        message: 'A slightly longer description of the error'
     });
 
 Instances can carry extra data about the error:
 
     try {
         throw new httpErrors.Forbidden({
-            msg: "The message", // Not mandatory
+            message: "The message", // Not mandatory
             data: {disallowedIds: [1, 3, 4, 6]}
         });
     } catch(e) {
@@ -72,7 +72,7 @@ Inheriting from an existing Error class:
 
     var NotFoundUnderTheBedError = httpErrors.createError({
         type: 'NotFoundUnderTheBed',
-        msg: 'I looked under the bed, but it was not found'
+        message: 'I looked under the bed, but it was not found'
     }, httpErrors.NotFound);
 
 Instances of this error walk and quack like `httpErrors.NotFound` instances, of course:
