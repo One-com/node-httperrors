@@ -1,9 +1,7 @@
-var http = require('http');
-var util = require('util');
-
-var xtend = require('xtend');
-
-var httpErrors = module.exports;
+var http = require('http'),
+    util = require('util'),
+    xtend = require('xtend'),
+    httpErrors = module.exports;
 
 httpErrors.createError = function (options, SuperConstructor) {
 
@@ -20,8 +18,7 @@ httpErrors.createError = function (options, SuperConstructor) {
         // if an object is passed in, the fields are merged
         if (typeof message === 'object') {
             xtend(this, message);
-        }
-        else {
+        } else {
             this.message = message;
         }
     };
