@@ -14,7 +14,6 @@ httpErrors.createError = function (options, SuperConstructor) {
         Error.captureStackTrace(this, arguments.callee);
 
         // set some common fields
-        this.message = message;
         this.name = options.name;
         this.statusCode = options.statusCode;
 
