@@ -24,8 +24,9 @@ Usage
         throw new httpErrors.ImATeapot('Dude...');
     }
 
-The error type is exposed as a true property on the instances, so your error handling
-code becomes quite readable (and you can avoid using instanceof):
+The CamelCased error name is exposed as a true property on the
+instances, so your error handling code becomes quite readable (and you
+can avoid using instanceof):
 
     if (err.NotFound) {
         // ...
@@ -50,7 +51,7 @@ Creating your own Error classes:
     var httpErrors = require('httperrors');
 
     var MyError = httpErrors.createError({
-        type: 'MyError',
+        name: 'MyError',
         // Used when no message is handed to the constructor:
         message: 'A slightly longer description of the error'
     });
@@ -71,7 +72,7 @@ Inheriting from an existing Error class:
     var httpErrors = require('httperrors');
 
     var NotFoundUnderTheBedError = httpErrors.createError({
-        type: 'NotFoundUnderTheBed',
+        name: 'NotFoundUnderTheBed',
         message: 'I looked under the bed, but it was not found'
     }, httpErrors.NotFound);
 
