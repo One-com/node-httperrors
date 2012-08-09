@@ -29,3 +29,13 @@ test('constructor with object', function() {
     assert.equal(err.message, 'foo');
     assert.equal(err.url, 'bar');
 });
+
+test('arbitrary property passed to createError', function() {
+    var Err = errors.createError({foo: 'bar'}, errors.NotFound),
+        err = new Err();
+
+    assert.equal(err.foo, 'bar');
+
+    var err2 = new Err({foo: 'quux'});
+    assert.equal(err2.foo, 'quux');
+});

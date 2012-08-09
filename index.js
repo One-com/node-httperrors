@@ -4,25 +4,21 @@ var http = require('http'),
     httpErrors = module.exports;
 
 httpErrors.createError = function (options, SuperConstructor) {
-
     SuperConstructor = SuperConstructor || Error;
 
     function Constructor(message) {
         SuperConstructor.call(this);
         Error.captureStackTrace(this, arguments.callee);
 
-        // set some common fields
-        this.name = options.name;
-        this.statusCode = options.statusCode;
-
-        // if an object is passed in, the fields are merged
-        if (typeof message === 'object') {
-            xtend(this, message);
-        } else {
+        if (typeof message === 'string') {
             this.message = message;
+        } else if (typeof message === 'object' && message) {
+            xtend(this, message);
         }
     };
     util.inherits(Constructor, SuperConstructor);
+
+    xtend(Constructor.prototype, options);
 
     // to avoid doing if (err instanceof NotFound)
     // instead you can just do if (err.NotFound)
