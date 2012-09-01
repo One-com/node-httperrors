@@ -1,7 +1,10 @@
 node-httperrors
 ===============
 
-Exposes HTTP 4xx and 5xx status codes as JavaScript Error objects.
+Exposes HTTP 4xx and 5xx status codes as JavaScript Error objects. The error classes are created using the <a href="https://github.com/One-com/node-createerror">createError module</a>.
+
+The original use case for `httpErrors` is to use a custom <a href="https://github.com/visionmedia/express">express</a> error handler that uses the `statusCode` property of the error instance as the status code for the response, and optionally logs further info from the error.
+
 
 Installation
 ------------
@@ -45,43 +48,6 @@ You can also create an error by status code (useful when proxying):
             // ...
         });
     }
-
-Creating your own Error classes:
-
-    var httpErrors = require('httperrors');
-
-    var MyError = httpErrors.createError({
-        name: 'MyError',
-        // Used when no message is handed to the constructor:
-        message: 'A slightly longer description of the error'
-    });
-
-Instances can carry extra data about the error:
-
-    try {
-        throw new httpErrors.Forbidden({
-            message: "The message", // Not mandatory
-            data: {disallowedIds: [1, 3, 4, 6]}
-        });
-    } catch(e) {
-        console.warn(e.data); // {disallowedIds: [1, 3, 4, 6]}
-    }
-
-Inheriting from an existing Error class:
-
-    var httpErrors = require('httperrors');
-
-    var NotFoundUnderTheBedError = httpErrors.createError({
-        name: 'NotFoundUnderTheBed',
-        message: 'I looked under the bed, but it was not found'
-    }, httpErrors.NotFound);
-
-Instances of this error walk and quack like `httpErrors.NotFound` instances, of course:
-
-    var ohDear = new NotFoundUnderTheBedError('No monsters today');
-    console.warn(ohDear.NotFound); // true
-    console.warn(ohDear.NotFoundUnderTheBed); // true
-
 
 License
 -------
