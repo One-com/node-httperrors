@@ -8,7 +8,7 @@
         "type": "git",
         "url": "git://github.com/One-com/node-httperrors.git"
     },
-    "main": "index.js",
+    "main": "lib/httpErrors.js",
     "engines": {
         "node": ">= 0.2.0"
     },
