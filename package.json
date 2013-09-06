@@ -3,7 +3,7 @@
   "name": "httperrors",
   "description": "Handy JavaScript Error classes representing the standard HTTP errors. Easily extensible and subclassable.",
   "keywords": ["http", "errors", "error", "request", "proxy", "client", "class", "errorclass"],
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/One-com/node-httperrors.git"
