@@ -1,28 +1,28 @@
 {
-    "author": "Andreas Lind Petersen <andreas@one.com>",
-    "name": "httperrors",
-    "description": "Handy JavaScript Error classes representing the standard HTTP errors. Easily extensible and subclassable.",
-    "keywords": ["http", "errors", "error", "request", "proxy", "client", "class", "errorclass"],
-    "version": "0.3.0",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/One-com/node-httperrors.git"
-    },
-    "main": "lib/httpErrors.js",
-    "engines": {
-        "node": ">= 0.2.0"
-    },
-    "dependencies": {
-        "createerror": "0.2.0"
-    },
-    "scripts": {
-        "test": "mocha --recursive"
-    },
-    "devDependencies": {
-        "mocha": "1.12.1",
-        "unexpected": "=0.0.6"
-    },
-    "publishConfig": {
-        "repository": "http://registry.npmjs.org/"
-    }
+  "author": "Andreas Lind Petersen <andreas@one.com>",
+  "name": "httperrors",
+  "description": "Handy JavaScript Error classes representing the standard HTTP errors. Easily extensible and subclassable.",
+  "keywords": ["http", "errors", "error", "request", "proxy", "client", "class", "errorclass"],
+  "version": "0.3.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/One-com/node-httperrors.git"
+  },
+  "main": "lib/httpErrors.js",
+  "engines": {
+    "node": ">= 0.2.0"
+  },
+  "dependencies": {
+    "createerror": "0.2.0"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "devDependencies": {
+    "mocha": "1.12.1",
+    "unexpected": "=0.0.6"
+  },
+  "publishConfig": {
+    "repository": "http://registry.npmjs.org/"
+  }
 }
