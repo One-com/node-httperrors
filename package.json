@@ -2,8 +2,17 @@
   "author": "Andreas Lind Petersen <andreas@one.com>",
   "name": "httperrors",
   "description": "Handy JavaScript Error classes representing the standard HTTP errors. Easily extensible and subclassable.",
-  "keywords": ["http", "errors", "error", "request", "proxy", "client", "class", "errorclass"],
-  "version": "0.4.0",
+  "keywords": [
+    "http",
+    "errors",
+    "error",
+    "request",
+    "proxy",
+    "client",
+    "class",
+    "errorclass"
+  ],
+  "version": "0.4.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/One-com/node-httperrors.git"
