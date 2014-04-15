@@ -6,6 +6,7 @@ describe('httpErrors', function () {
         var err = new httpErrors.NotFound('sadface');
 
         expect(err.statusCode, 'to equal', 404);
+        expect(err.status, 'to equal', 404);
         expect(err.message, 'to equal', 'sadface');
         expect(err.name, 'to equal', 'NotFound');
     });
