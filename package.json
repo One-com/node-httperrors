@@ -25,10 +25,13 @@
     "createerror": "0.4.1"
   },
   "scripts": {
+    "dist": "browserify ./lib/httpErrors.js -s httpErrors | uglifyjs -mc > ./dist/httpErrors.js",
     "test": "mocha --recursive"
   },
   "devDependencies": {
+    "browserify": "^5.3.0",
     "mocha": "1.12.1",
+    "uglifyjs": "^2.3.6",
     "unexpected": "=0.0.6"
   },
   "publishConfig": {
