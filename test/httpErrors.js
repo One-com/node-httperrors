@@ -41,4 +41,30 @@ describe('httpErrors', function () {
         expect(err.message, 'to equal', 'foo');
         expect(err.url, 'to equal', 'bar');
     });
+
+    describe('when invoked as a function', function () {
+        it('should create an instance of httpErrors.Unknown if called with no arguments', function () {
+            expect(httpErrors().name, 'to equal', 'Unknown');
+        });
+
+        describe('and passed a number', function () {
+            it('should create an instance of the proper error for a known status code', function () {
+                expect(httpErrors(412).name, 'to equal', 'PreconditionFailed');
+            });
+
+            it('should create an instance of httpErrors.Unknown if given a status code that is not directly supported', function () {
+                expect(httpErrors(595).name, 'to equal', 'Unknown');
+            });
+        });
+
+        describe('and passed an options object', function () {
+            it('should create an instance of httpErrors.Unknown if the status code is not directly supported', function () {
+                expect(httpErrors({statusCode: 595}).name, 'to equal', 'Unknown');
+            });
+
+            it('should create an instance of httpErrors.Unknown if no status code is provided', function () {
+                expect(httpErrors({foo: 'bar'}).name, 'to equal', 'Unknown');
+            });
+        });
+    });
 });

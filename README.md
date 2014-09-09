@@ -18,6 +18,9 @@ Usage
 
     var httpErrors = require('httperrors');
 
+    // Instatiate by status code:
+    var myError = httpErrors(412);
+
     // Instantiate by name (UpperCamelCase):
     var err = new httpErrors.NotFound('The thing you were looking for was not found');
 
