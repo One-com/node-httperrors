@@ -22,7 +22,7 @@
     "node": ">= 0.2.0"
   },
   "dependencies": {
-    "createerror": "0.5.0"
+    "createerror": "0.5.1"
   },
   "devDependencies": {
     "browserify": "^5.3.0",
