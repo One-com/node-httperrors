@@ -26,9 +26,9 @@
   },
   "devDependencies": {
     "browserify": "^5.3.0",
-    "mocha": "1.12.1",
+    "mocha": "2.2.5",
     "uglify-js": "^2.3.6",
-    "unexpected": "=0.0.6"
+    "unexpected": "7.4.2"
   },
   "scripts": {
     "dist": "mkdir -p dist && browserify ./lib/httpErrors.js -s httpErrors | ./node_modules/.bin/uglifyjs -mc > ./dist/httpErrors.js",
