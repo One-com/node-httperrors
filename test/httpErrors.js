@@ -2,6 +2,10 @@ var expect = require('unexpected'),
     httpErrors = require('../lib/httpErrors');
 
 describe('httpErrors', function () {
+    it('should produce instances that have an http property with a value of true', function () {
+        expect(new httpErrors.NotFound(), 'to have property', 'http', true)
+    });
+
     it('#.NotFound should produce NotFound instances', function() {
         var err = new httpErrors.NotFound('sadface');
 
