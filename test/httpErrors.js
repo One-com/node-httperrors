@@ -3,7 +3,11 @@ var expect = require('unexpected'),
 
 describe('httpErrors', function () {
     it('should produce instances that have an http property with a value of true', function () {
-        expect(new httpErrors.NotFound(), 'to have property', 'http', true)
+        expect(new httpErrors.NotFound(), 'to have property', 'http', true);
+    });
+
+    it('should produce instances of httpErrors.HttpError', function () {
+        expect(new httpErrors.NotFound(), 'to be a', httpErrors.HttpError);
     });
 
     it('#.NotFound should produce NotFound instances', function() {
