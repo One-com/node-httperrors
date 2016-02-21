@@ -61,7 +61,9 @@ describe('HttpError', function () {
             });
 
             it('should create an instance of HttpError if given a status code that is not directly supported', function () {
-                expect(HttpError(595).name, 'to equal', 'HttpError');
+                var instance = HttpError(595);
+                expect(instance.name, 'to equal', 'HttpError');
+                expect(instance.statusCode, 'to equal', 595);
             });
         });
 
