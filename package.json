@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git://github.com/One-com/node-httperrors.git"
   },
-  "main": "lib/httpErrors.js",
+  "main": "lib/HttpError.js",
   "engines": {
     "node": ">= 0.2.0"
   },
@@ -31,7 +31,7 @@
     "unexpected": "10.8.2"
   },
   "scripts": {
-    "dist": "mkdir -p dist && browserify ./lib/httpErrors.js -s httpErrors | ./node_modules/.bin/uglifyjs -mc > ./dist/httpErrors.js",
+    "dist": "mkdir -p dist && browserify ./lib/HttpError.js -s HttpError | ./node_modules/.bin/uglifyjs -mc > ./dist/httpErrors.js && cp dist/httpErrors.js dist/HttpError.js",
     "prepublish": "npm run test && npm run dist",
     "test": "mocha --recursive"
   },
