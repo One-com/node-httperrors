@@ -103,4 +103,16 @@ describe('HttpError', function () {
             expect(HttpError.supports(fakeHttpError), 'to be false');
         });
     });
+
+    it('should provide RequestEntityTooLarge as a legacy alias for PayloadTooLarge', function () {
+        expect(new HttpError.RequestEntityTooLarge(), 'to satisfy', { statusCode: 413, RequestEntityTooLarge: true, PayloadTooLarge: true });
+    });
+
+    it('should provide RequestURITooLarge as a legacy alias for URITooLong', function () {
+        expect(new HttpError.RequestURITooLarge(), 'to satisfy', { statusCode: 414, RequestURITooLarge: true, URITooLong: true });
+    });
+
+    it('should provide RequestedRangeNotSatisfiable as a legacy alias for URITooLong', function () {
+        expect(new HttpError.RequestedRangeNotSatisfiable(), 'to satisfy', { statusCode: 416, RequestedRangeNotSatisfiable: true, RangeNotSatisfiable: true });
+    });
 });
