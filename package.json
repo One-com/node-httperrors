@@ -38,8 +38,5 @@
   "files": [
     "lib",
     "dist"
-  ],
-  "publishConfig": {
-    "repository": "http://registry.npmjs.org/"
-  }
+  ]
 }
