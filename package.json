@@ -28,7 +28,7 @@
     "browserify": "13.0.0",
     "mocha": "^5.2.0",
     "uglify-js": "2.6.1",
-    "unexpected": "10.8.2"
+    "unexpected": "13.1.0"
   },
   "scripts": {
     "dist": "mkdir -p dist && browserify ./lib/HttpError.js -s HttpError | ./node_modules/.bin/uglifyjs -mc > ./dist/httpErrors.js && cp dist/httpErrors.js dist/HttpError.js",
